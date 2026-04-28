@@ -37,7 +37,6 @@ progress,
 meter,
 dialog {
   font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif !important;
-  font-size: 14px !important; /* Carbon base font size is 14px */
   border-radius: 0 !important; /* Carbon uses sharp corners */
   -webkit-appearance: none !important;
   -moz-appearance: none !important;
