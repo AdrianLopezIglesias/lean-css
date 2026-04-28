@@ -1,10 +1,40 @@
+/* =========================
+   VARIABLES & GLOBAL RESETS
+   ========================= */
+:root {
+  /* Theme colors */
+  --color-primary: #b77086;
+  --color-primary-hover: #b02a55;
+  --color-secondary: #007bb7;
+  --color-success: #007c7b;
+
+  /* Semantic/State colors */
+  --color-danger: #d32f2f;
+  --color-danger-hover: #b71c1c;
+  --color-warning: #fbc02d;
+  --color-warning-hover: #f57f17;
+  --color-info: #0288d1;
+  --color-info-hover: #01579b;
+  --color-disabled-bg: #cccccc;
+  --color-disabled-text: #666666;
+
+  /* Neutral colors */
+  --color-default-bg: #e0e0e0;
+  --color-text: #000000;
+  --color-text-inverse: #ffffff;
+}
+
 *,
 body,
 table,
 code,
 button,
 input,
-textarea {
+textarea,
+select,
+progress,
+meter,
+dialog {
   font-family: 'Courier New', Courier, monospace !important;
   font-size: 16px !important;
   border-radius: 0 !important;
@@ -13,40 +43,35 @@ textarea {
   appearance: none !important;
 }
 
-/* Rebuild the checkbox since appearance: none hid it */
-input[type='checkbox'] {
-  /* Give it a fixed square size */
-  width: 18px;
-  height: 18px;
-  display: inline-block;
-
-  /* Draw the strict square border */
-  border: 1px solid #000 !important;
-  background-color: #fff;
-  cursor: pointer;
-
-  /* Alignment fixes so it sits nicely next to text */
-  vertical-align: middle;
-  margin: 0 8px 0 0;
-  padding: 0; /* Reset padding just in case */
-}
-
-input[type='checkbox']:checked {
-  background-color: #000;
-  box-shadow: inset 0 0 0 3px #fff;
-}
-
-table {
+html,
+body {
+  max-width: 100%;
   width: 100%;
-  border-collapse: collapse;
-  margin: 0;
-  padding: 0;
+  margin: 0 !important;
+  padding: 4px;
+  margin: 4px;
+  box-sizing: border-box;
 }
 
-th,
-td {
-  padding: 0;
-  vertical-align: top;
+/* =========================
+   TYPOGRAPHY & LISTS
+   ========================= */
+p {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* Links */
+a {
+  color: var(--color-secondary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+a:hover {
+  color: var(--color-primary);
+  text-decoration-thickness: 2px;
 }
 
 ul {
@@ -67,72 +92,425 @@ li:not(:last-child)::after {
   content: ", ";
 }
 
-p {
-  margin-top: 0;
-  margin-bottom: 0;
-  padding-top: 0;
-  padding-bottom: 0;
+hr {
+  border: none;
+  border-top: 1px solid #000 !important;
+  margin: 16px 0;
 }
 
-button {
-  width: 100%;
-  display: block;
-  margin: 0px ;
-  text-align: center;
-  border: 1px solid #707070 !important; 
-  /* border: none !important; */
-  padding: 8px;
-  /* background-color: #e0e0e0; */
+blockquote {
+  border-left: 4px solid #000;
+  margin: 0 0 16px 0;
+  padding: 8px 16px;
   background-color: var(--color-default-bg);
+}
+
+pre {
+  border: 1px solid #000 !important;
+  padding: 16px;
+  background-color: var(--color-default-bg);
+  overflow-x: auto;
+  margin: 0 0 16px 0;
+}
+
+/* Highlights & Inline Code */
+mark {
+  background-color: var(--color-warning);
   color: var(--color-text);
-  transition:
-    background-color 0.2s ease,
-    color 0.2s ease;
-  cursor: pointer !important;
+  padding: 2px 4px;
 }
 
-button.active {
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+:not(pre) > code {
+  background-color: var(--color-default-bg);
+  border: 1px solid #707070;
+  padding: 2px 4px;
 }
 
-/* An example of another custom color variant */
-button.variant-secondary {
-  background-color: var(--color-secondary);
-  color: var(--color-text-inverse);
+kbd {
+  background-color: #fff;
+  border: 1px solid #000;
+  border-bottom: 2px solid #000;
+  padding: 2px 6px;
+  font-size: 14px !important;
 }
 
-/* Added textarea to this block */
+/* =========================
+   MEDIA
+   ========================= */
+img, 
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid #000;
+}
+
+figure {
+  margin: 0 0 16px 0;
+  padding: 0;
+}
+
+figcaption {
+  font-size: 14px !important;
+  padding: 8px;
+  background-color: var(--color-default-bg);
+  border: 1px solid #000;
+  border-top: none;
+}
+
+/* =========================
+   TABLES (Bare for layout)
+   ========================= */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+}
+
+th,
+td {
+  padding: 0;
+  vertical-align: top;
+  text-align: left;
+  border: none;
+}
+
+/* =========================
+   FORMS & INPUTS
+   ========================= */
+fieldset {
+  border: 1px solid #000 !important;
+  padding: 16px;
+  margin: 0 0 16px 0;
+  min-width: 0;
+}
+
+legend {
+  padding: 0 8px;
+  font-weight: bold;
+}
+
+/* Standardized Text-Style Inputs */
 input[type='text'],
 input[type='password'],
-textarea {
+input[type='email'],
+input[type='number'],
+input[type='date'],
+textarea,
+select {
   width: 100%;
   box-sizing: border-box;
   display: block;
   margin-bottom: 0px;
   border: 1px solid #000 !important;
   padding: 8px;
-  resize: vertical; /* Keeps users from breaking the layout horizontally */
+  background-color: #fff;
+  color: var(--color-text);
+  resize: vertical;
 }
 
-html,
-body {
-  max-width: 100%;
+/* Interactive States for Text Inputs */
+input[type='text']:focus,
+input[type='password']:focus,
+input[type='email']:focus,
+input[type='number']:focus,
+input[type='date']:focus,
+textarea:focus,
+select:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: -2px;
+}
+
+/* Fix for WebKit date picker calendar icon */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  filter: invert(1);
+}
+
+/* Checkboxes */
+input[type='checkbox'] {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  border: 1px solid #000 !important;
+  background-color: #fff;
+  cursor: pointer;
+  vertical-align: middle;
+  margin: 0 8px 0 0;
+  padding: 0;
+}
+
+input[type='checkbox']:checked {
+  background-color: #000;
+  box-shadow: inset 0 0 0 3px #fff;
+}
+
+/* Radio Buttons */
+input[type='radio'] {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  border: 1px solid #000 !important;
+  background-color: #fff;
+  cursor: pointer;
+  vertical-align: middle;
+  margin: 0 8px 0 0;
+  padding: 0;
+  border-radius: 50% !important;
+}
+
+input[type='radio']:checked {
+  background-color: #000;
+  box-shadow: inset 0 0 0 3px #fff;
+}
+
+/* File Upload */
+input[type='file'] {
   width: 100%;
-  margin: 0 !important;
-  padding: 1px;
   box-sizing: border-box;
+  padding: 4px;
+  border: 1px solid #000 !important;
+  background-color: #fff;
+  color: var(--color-text);
+  cursor: pointer;
 }
 
-:root {
-  /* Define your standard theme colors */
-  --color-primary: #b77086;
-  --color-primary-hover: #b02a55;
-  --color-secondary: #007bb7;
-  --color-success: #007c7b;
+input[type='file']::file-selector-button {
+  border: 1px solid #707070 !important;
+  padding: 4px 8px;
+  background-color: var(--color-default-bg);
+  color: var(--color-text);
+  font-family: inherit;
+  cursor: pointer;
+  margin-right: 8px;
+  border-radius: 0;
+  transition: background-color 0.2s ease;
+}
 
-  /* Neutral colors */
-  --color-default-bg: #e0e0e0;
-  --color-text: #000000;
-  --color-text-inverse: #ffffff;
+input[type='file']::file-selector-button:hover {
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+}
+
+/* Range Slider */
+input[type='range'] {
+  width: 100%;
+  background: transparent;
+  padding: 8px 0;
+  cursor: pointer;
+  margin-bottom: 16px;
+}
+
+input[type='range']::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 2px;
+  background: #000;
+}
+
+input[type='range']::-webkit-slider-thumb {
+  height: 16px;
+  width: 16px;
+  background: #000;
+  border: none !important;
+  border-radius: 0 !important;
+  margin-top: -7px;
+}
+
+input[type='range']::-moz-range-track {
+  width: 100%;
+  height: 2px;
+  background: #000;
+}
+
+input[type='range']::-moz-range-thumb {
+  height: 16px;
+  width: 16px;
+  background: #000;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+/* =========================
+   BUTTONS & VARIANTS
+   ========================= */
+button,
+input[type='button'],
+input[type='submit'],
+input[type='reset'] {
+  width: 100%;
+  display: block;
+  margin: 0px ;
+  text-align: center;
+  border: 1px solid #707070 !important; 
+  padding: 8px;
+  background-color: var(--color-default-bg);
+  color: var(--color-text);
+  transition: background-color 0.2s ease, color 0.2s ease;
+  cursor: pointer !important;
+}
+
+/* Disabled State */
+button:disabled,
+input[type='button']:disabled,
+input[type='submit']:disabled,
+input[type='reset']:disabled,
+button.disabled,
+.btn.disabled {
+  background-color: var(--color-disabled-bg) !important;
+  color: var(--color-disabled-text) !important;
+  border-color: var(--color-disabled-text) !important;
+  cursor: not-allowed !important;
+  opacity: 0.7;
+}
+
+/* Semantic Variants */
+button.active,
+input[type='button'].active,
+input[type='submit'].active,
+input[type='reset'].active,
+button.primary,
+input[type='button'].primary {
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+}
+button.primary:hover:not(:disabled),
+button.active:hover:not(:disabled) { 
+  background-color: var(--color-primary-hover); 
+}
+
+button.secondary,
+input[type='button'].secondary,
+button.variant-secondary /* legacy support */ {
+  background-color: var(--color-secondary);
+  color: var(--color-text-inverse);
+}
+
+button.danger,
+input[type='button'].danger {
+  background-color: var(--color-danger);
+  color: var(--color-text-inverse);
+}
+button.danger:hover:not(:disabled) { 
+  background-color: var(--color-danger-hover); 
+}
+
+button.warning,
+input[type='button'].warning {
+  background-color: var(--color-warning);
+  color: var(--color-text); 
+}
+button.warning:hover:not(:disabled) { 
+  background-color: var(--color-warning-hover); 
+}
+
+button.info,
+input[type='button'].info {
+  background-color: var(--color-info);
+  color: var(--color-text-inverse);
+}
+button.info:hover:not(:disabled) { 
+  background-color: var(--color-info-hover); 
+}
+
+/* =========================
+   INTERACTIVE & DATA
+   ========================= */
+details {
+  border: 1px solid #000 !important;
+  padding: 8px 16px;
+  margin-bottom: 16px;
+  background-color: #fff;
+}
+
+summary {
+  cursor: pointer;
+  font-weight: bold;
+  margin-left: -8px;
+}
+
+dialog {
+  border: 1px solid #000 !important;
+  padding: 24px;
+  background-color: #fff;
+  color: var(--color-text);
+  max-width: 90vw;
+  width: 400px;
+  box-shadow: 8px 8px 0px rgba(0,0,0,1);
+}
+
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Progress Bar */
+progress {
+  width: 100%;
+  height: 24px;
+  display: block;
+  border: 1px solid #000 !important;
+  background-color: #fff;
+  margin-bottom: 16px;
+}
+progress::-webkit-progress-bar {
+  background-color: #fff;
+}
+progress::-webkit-progress-value {
+  background-color: var(--color-text);
+}
+progress::-moz-progress-bar {
+  background-color: var(--color-text);
+}
+
+/* Minimalist Meter */
+meter {
+  width: 100%;
+  height: 24px;
+  display: block;
+  border: 1px solid #000 !important;
+  background-color: #fff;
+  margin-bottom: 16px;
+}
+meter::-webkit-meter-bar {
+  background-color: #fff;
+  border: none;
+  border-radius: 0;
+}
+meter::-webkit-meter-optimum-value,
+meter::-webkit-meter-suboptimum-value,
+meter::-webkit-meter-even-less-good-value {
+  background-color: #000;
+}
+meter::-moz-meter-bar {
+  background-color: #000;
+}
+
+/* =========================
+   DATA TABLES (Opt-in)
+   ========================= */
+table.ruled {
+  border-collapse: collapse;
+}
+
+/* Apply the horizontal rule to the bottom of each row */
+table.ruled tr {
+  border-bottom: 1px solid #000;
+}
+
+/* Optional: Remove the border from the last row to keep the bottom flush */
+table.ruled tr:last-child {
+  border-bottom: none;
+}
+
+/* Add padding back in for readability, since the base table is bare */
+table.ruled th,
+table.ruled td {
+  padding: 8px;
+  vertical-align: top;
+}
+
+/* Optional: Give headers a slightly thicker bottom border for hierarchy */
+table.ruled th {
+  text-align: left;
+  background-color: var(--color-default-bg);
 }
