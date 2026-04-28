@@ -137,13 +137,6 @@ kbd {
 /* =========================
    MEDIA
    ========================= */
-img, 
-video {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  border: 1px solid #000;
-}
 
 figure {
   margin: 0 0 16px 0;

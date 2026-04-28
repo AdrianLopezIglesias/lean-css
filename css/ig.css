@@ -154,13 +154,7 @@ kbd {
 /* =========================
    MEDIA
    ========================= */
-img, 
-video {
-  max-width: 100%;
-  height: auto;
-  border: 1px solid var(--color-border);
-  border-radius: 3px !important; /* Slightly tighter radius for classic IG media */
-}
+
 
 figure {
   margin: 0 0 16px 0;
