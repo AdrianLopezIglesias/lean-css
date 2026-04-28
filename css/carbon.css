@@ -136,21 +136,6 @@ kbd {
   font-size: 12px !important;
 }
 
-/* =========================
-   MEDIA
-   ========================= */
-
-
-figure {
-  margin: 0 0 16px 0;
-  padding: 0;
-}
-
-figcaption {
-  font-size: 12px !important;
-  color: #525252; /* Gray 70 */
-  padding: 8px 0;
-}
 
 /* =========================
    TABLES (Bare for layout)
