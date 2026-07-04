@@ -367,7 +367,7 @@ button:hover:not(:disabled),
 input[type='submit']:hover:not(:disabled),
 button.active,
 button.primary {
-  background-color: var(--color-primary-hover);
+  background-color: var(--color-success);
 }
 
 button.secondary,

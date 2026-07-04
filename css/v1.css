@@ -2,26 +2,30 @@
    VARIABLES & GLOBAL RESETS
    ========================= */
 :root {
-  /* Theme colors */
-  --color-primary: #b77086;
-  --color-primary-hover: #b02a55;
-  --color-secondary: #007bb7;
-  --color-success: #007c7b;
+  /* High-Impact Theme colors */
+  --color-primary: #4f46e5;
+  --color-primary-hover: #4338ca;
+  --color-secondary: #10b981;
+  --color-success: #059669;
 
   /* Semantic/State colors */
-  --color-danger: #d32f2f;
-  --color-danger-hover: #b71c1c;
-  --color-warning: #fbc02d;
-  --color-warning-hover: #f57f17;
-  --color-info: #0288d1;
-  --color-info-hover: #01579b;
-  --color-disabled-bg: #cccccc;
-  --color-disabled-text: #666666;
+  --color-danger: #ef4444;
+  --color-danger-hover: #dc2626;
+  --color-warning: #f59e0b;
+  --color-warning-hover: #d97706;
+  --color-info: #0ea5e9;
+  --color-info-hover: #0284c7;
+  --color-disabled-bg: #e2e8f0;
+  --color-disabled-text: #64748b;
 
   /* Neutral colors */
-  --color-default-bg: #e0e0e0;
-  --color-text: #000000;
+  --color-default-bg: #f8fafc;
+  --color-button-idle: #f1f5f9;
+  --color-button-idle-hover: #e2e8f0;
+  --color-text: #0f172a;
+  --color-text-muted: #475569;
   --color-text-inverse: #ffffff;
+  --color-border: #cbd5e1;
 }
 
 *,
@@ -35,22 +39,19 @@ select,
 progress,
 meter,
 dialog {
-  font-family: 'Courier New', Courier, monospace !important;
-  font-size: 16px !important;
-  border-radius: 0 !important;
-  -webkit-appearance: none !important;
-  -moz-appearance: none !important;
-  appearance: none !important;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 16px;
+  color: var(--color-text);
+  box-sizing: border-box;
 }
 
 html,
 body {
   max-width: 100%;
   width: 100%;
-  margin: 0 !important;
-  padding: 4px;
-  margin: 4px;
-  box-sizing: border-box;
+  margin: 0;
+  padding: 16px;
+  background-color: #ffffff;
 }
 
 /* =========================
@@ -58,29 +59,24 @@ body {
    ========================= */
 p {
   margin-top: 0;
-  margin-bottom: 0;
-  padding-top: 0;
-  padding-bottom: 0;
+  margin-bottom: 16px;
+  line-height: 1.6;
 }
 
 /* Links */
 a {
-  color: var(--color-secondary);
-  text-decoration: underline;
-  text-underline-offset: 2px;
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
 }
 a:hover {
-  color: var(--color-primary);
-  text-decoration-thickness: 2px;
+  color: var(--color-primary-hover);
 }
 
 ul {
-  margin-top: 0;
-  margin-bottom: 0;
-  padding-top: 0;
-  padding-bottom: 0;
-  margin-left: 0;
-  padding-left: 0;
+  margin: 0 0 16px 0;
+  padding-left: 20px;
   list-style-type: none; 
 }
 
@@ -90,25 +86,30 @@ ul > li {
 
 li:not(:last-child)::after {
   content: ", ";
+  color: var(--color-border);
 }
 
 hr {
   border: none;
-  border-top: 1px solid #000 !important;
-  margin: 16px 0;
+  border-top: 2px solid var(--color-border);
+  margin: 24px 0;
 }
 
 blockquote {
-  border-left: 4px solid #000;
+  border-left: 4px solid var(--color-primary);
   margin: 0 0 16px 0;
-  padding: 8px 16px;
+  padding: 16px;
   background-color: var(--color-default-bg);
+  border-radius: 0 8px 8px 0;
+  font-style: italic;
 }
 
 pre {
-  border: 1px solid #000 !important;
+  border: 1px solid var(--color-border);
   padding: 16px;
-  background-color: var(--color-default-bg);
+  background-color: var(--color-text);
+  color: var(--color-text-inverse);
+  border-radius: 8px;
   overflow-x: auto;
   margin: 0 0 16px 0;
 }
@@ -116,72 +117,105 @@ pre {
 /* Highlights & Inline Code */
 mark {
   background-color: var(--color-warning);
-  color: var(--color-text);
-  padding: 2px 4px;
+  color: #fff;
+  padding: 2px 6px;
+  border-radius: 4px;
 }
 
 :not(pre) > code {
   background-color: var(--color-default-bg);
-  border: 1px solid #707070;
-  padding: 2px 4px;
+  border: 1px solid var(--color-border);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  color: var(--color-primary);
 }
 
 kbd {
   background-color: #fff;
-  border: 1px solid #000;
-  border-bottom: 2px solid #000;
+  border: 1px solid var(--color-border);
+  border-bottom: 3px solid var(--color-border);
   padding: 2px 6px;
-  font-size: 14px !important;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 /* =========================
    MEDIA
    ========================= */
-
 figure {
   margin: 0 0 16px 0;
   padding: 0;
 }
 
 figcaption {
-  font-size: 14px !important;
+  font-size: 14px;
   padding: 8px;
   background-color: var(--color-default-bg);
-  border: 1px solid #000;
+  border: 1px solid var(--color-border);
   border-top: none;
+  border-radius: 0 0 8px 8px;
+  text-align: center;
+  color: #64748b;
+}
+
+img {
+  border-radius: 8px;
+  max-width: 100%;
 }
 
 /* =========================
-   TABLES (Bare for layout)
+   TABLES
    ========================= */
 table {
   width: 100%;
-  border-collapse: collapse;
-  margin: 0;
-  padding: 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 0 0 16px 0;
 }
 
 th,
 td {
-  padding: 0;
+  padding: 12px 16px;
   vertical-align: top;
   text-align: left;
-  border: none;
+  border-bottom: 1px solid var(--color-border);
+}
+
+th {
+  background-color: var(--color-default-bg);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+}
+
+th:first-child {
+  border-top-left-radius: 8px;
+}
+th:last-child {
+  border-top-right-radius: 8px;
 }
 
 /* =========================
    FORMS & INPUTS
    ========================= */
 fieldset {
-  border: 1px solid #000 !important;
-  padding: 16px;
+  border: 1px solid var(--color-border);
+  padding: 24px;
   margin: 0 0 16px 0;
-  min-width: 0;
+  border-radius: 8px;
+  background-color: #fff;
 }
 
 legend {
-  padding: 0 8px;
-  font-weight: bold;
+  padding: 4px 12px;
+  font-weight: 600;
+  color: var(--color-text-inverse);
+  background: var(--color-text);
+  border-radius: 6px;
 }
 
 /* Standardized Text-Style Inputs */
@@ -193,97 +227,52 @@ input[type='date'],
 textarea,
 select {
   width: 100%;
-  box-sizing: border-box;
   display: block;
-  margin-bottom: 0px;
-  border: 1px solid #000 !important;
-  padding: 8px;
+  margin-bottom: 16px;
+  border: 2px solid var(--color-border);
+  padding: 10px 14px;
   background-color: #fff;
-  color: var(--color-text);
-  resize: vertical;
+  border-radius: 8px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Interactive States for Text Inputs */
-input[type='text']:focus,
-input[type='password']:focus,
-input[type='email']:focus,
-input[type='number']:focus,
-input[type='date']:focus,
+input:focus,
 textarea:focus,
 select:focus {
-  outline: 2px solid var(--color-primary);
-  outline-offset: -2px;
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
 }
 
-/* Fix for WebKit date picker calendar icon */
-input[type="date"]::-webkit-calendar-picker-indicator {
-  cursor: pointer;
-  filter: invert(1);
-}
-
-/* Checkboxes */
-input[type='checkbox'] {
-  width: 18px;
-  height: 18px;
-  display: inline-block;
-  border: 1px solid #000 !important;
-  background-color: #fff;
-  cursor: pointer;
-  vertical-align: middle;
-  margin: 0 8px 0 0;
-  padding: 0;
-}
-
-input[type='checkbox']:checked {
-  background-color: #000;
-  box-shadow: inset 0 0 0 3px #fff;
-}
-
-/* Radio Buttons */
+/* Checkboxes & Radios */
+input[type='checkbox'],
 input[type='radio'] {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   display: inline-block;
-  border: 1px solid #000 !important;
+  border: 2px solid var(--color-border);
   background-color: #fff;
   cursor: pointer;
   vertical-align: middle;
   margin: 0 8px 0 0;
-  padding: 0;
-  border-radius: 50% !important;
+  transition: all 0.2s ease;
+  appearance: none;
+  -webkit-appearance: none;
 }
 
+input[type='checkbox'] {
+  border-radius: 4px;
+}
+
+input[type='radio'] {
+  border-radius: 50%;
+}
+
+input[type='checkbox']:checked,
 input[type='radio']:checked {
-  background-color: #000;
-  box-shadow: inset 0 0 0 3px #fff;
-}
-
-/* File Upload */
-input[type='file'] {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 4px;
-  border: 1px solid #000 !important;
-  background-color: #fff;
-  color: var(--color-text);
-  cursor: pointer;
-}
-
-input[type='file']::file-selector-button {
-  border: 1px solid #707070 !important;
-  padding: 4px 8px;
-  background-color: var(--color-default-bg);
-  color: var(--color-text);
-  font-family: inherit;
-  cursor: pointer;
-  margin-right: 8px;
-  border-radius: 0;
-  transition: background-color 0.2s ease;
-}
-
-input[type='file']::file-selector-button:hover {
   background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  border-color: var(--color-primary);
+  box-shadow: inset 0 0 0 4px #fff;
 }
 
 /* Range Slider */
@@ -292,36 +281,24 @@ input[type='range'] {
   background: transparent;
   padding: 8px 0;
   cursor: pointer;
-  margin-bottom: 16px;
+  appearance: none;
 }
 
 input[type='range']::-webkit-slider-runnable-track {
   width: 100%;
-  height: 2px;
-  background: #000;
+  height: 6px;
+  background: var(--color-border);
+  border-radius: 8px;
 }
 
 input[type='range']::-webkit-slider-thumb {
-  height: 16px;
-  width: 16px;
-  background: #000;
-  border: none !important;
-  border-radius: 0 !important;
+  height: 20px;
+  width: 20px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  appearance: none;
   margin-top: -7px;
-}
-
-input[type='range']::-moz-range-track {
-  width: 100%;
-  height: 2px;
-  background: #000;
-}
-
-input[type='range']::-moz-range-thumb {
-  height: 16px;
-  width: 16px;
-  background: #000;
-  border: none !important;
-  border-radius: 0 !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
 /* =========================
@@ -333,177 +310,90 @@ input[type='submit'],
 input[type='reset'] {
   width: 100%;
   display: block;
-  margin: 0px ;
   text-align: center;
-  border: 1px solid #707070 !important; 
-  padding: 8px;
-  background-color: var(--color-default-bg);
+  border: 2px solid transparent;
+  padding: 12px 20px;
+  background-color: var(--color-button-idle);
+  color: var(--color-text-muted);
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  margin-bottom: 16px;
+}
+
+button:hover,
+input[type='button']:hover {
+  background-color: var(--color-button-idle-hover);
   color: var(--color-text);
-  transition: background-color 0.2s ease, color 0.2s ease;
-  cursor: pointer !important;
 }
 
-/* Disabled State */
-button:disabled,
-input[type='button']:disabled,
-input[type='submit']:disabled,
-input[type='reset']:disabled,
-button.disabled,
-.btn.disabled {
-  background-color: var(--color-disabled-bg) !important;
-  color: var(--color-disabled-text) !important;
-  border-color: var(--color-disabled-text) !important;
-  cursor: not-allowed !important;
-  opacity: 0.7;
-}
-
-/* Semantic Variants */
+/* Restored & Enhanced Active Class */
 button.active,
 input[type='button'].active,
-input[type='submit'].active,
-input[type='reset'].active,
-button.primary,
-input[type='button'].primary {
+.active {
+  background-color: var(--color-primary) !important;
+  color: var(--color-text-inverse) !important;
+  border-color: var(--color-primary-hover) !important;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
+}
+
+button.primary {
   background-color: var(--color-primary);
   color: var(--color-text-inverse);
 }
-button.primary:hover:not(:disabled),
-button.active:hover:not(:disabled) { 
-  background-color: var(--color-primary-hover); 
+button.primary:hover {
+  background-color: var(--color-primary-hover);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
 }
 
-button.secondary,
-input[type='button'].secondary,
-button.variant-secondary /* legacy support */ {
+button.secondary {
   background-color: var(--color-secondary);
   color: var(--color-text-inverse);
-}
-
-button.danger,
-input[type='button'].danger {
-  background-color: var(--color-danger);
-  color: var(--color-text-inverse);
-}
-button.danger:hover:not(:disabled) { 
-  background-color: var(--color-danger-hover); 
-}
-
-button.warning,
-input[type='button'].warning {
-  background-color: var(--color-warning);
-  color: var(--color-text); 
-}
-button.warning:hover:not(:disabled) { 
-  background-color: var(--color-warning-hover); 
-}
-
-button.info,
-input[type='button'].info {
-  background-color: var(--color-info);
-  color: var(--color-text-inverse);
-}
-button.info:hover:not(:disabled) { 
-  background-color: var(--color-info-hover); 
 }
 
 /* =========================
    INTERACTIVE & DATA
    ========================= */
 details {
-  border: 1px solid #000 !important;
-  padding: 8px 16px;
+  border: 1px solid var(--color-border);
+  padding: 12px 16px;
   margin-bottom: 16px;
   background-color: #fff;
+  border-radius: 8px;
 }
 
 summary {
   cursor: pointer;
-  font-weight: bold;
-  margin-left: -8px;
+  font-weight: 600;
 }
 
 dialog {
-  border: 1px solid #000 !important;
-  padding: 24px;
+  border: none;
+  padding: 32px;
   background-color: #fff;
-  color: var(--color-text);
+  border-radius: 16px;
   max-width: 90vw;
   width: 400px;
-  box-shadow: 8px 8px 0px rgba(0,0,0,1);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
 dialog::backdrop {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
 }
 
 /* Progress Bar */
 progress {
   width: 100%;
-  height: 24px;
-  display: block;
-  border: 1px solid #000 !important;
-  background-color: #fff;
+  height: 12px;
+  border: none;
+  background-color: var(--color-border);
+  border-radius: 8px;
   margin-bottom: 16px;
-}
-progress::-webkit-progress-bar {
-  background-color: #fff;
+  overflow: hidden;
 }
 progress::-webkit-progress-value {
-  background-color: var(--color-text);
-}
-progress::-moz-progress-bar {
-  background-color: var(--color-text);
-}
-
-/* Minimalist Meter */
-meter {
-  width: 100%;
-  height: 24px;
-  display: block;
-  border: 1px solid #000 !important;
-  background-color: #fff;
-  margin-bottom: 16px;
-}
-meter::-webkit-meter-bar {
-  background-color: #fff;
-  border: none;
-  border-radius: 0;
-}
-meter::-webkit-meter-optimum-value,
-meter::-webkit-meter-suboptimum-value,
-meter::-webkit-meter-even-less-good-value {
-  background-color: #000;
-}
-meter::-moz-meter-bar {
-  background-color: #000;
-}
-
-/* =========================
-   DATA TABLES (Opt-in)
-   ========================= */
-table.ruled {
-  border-collapse: collapse;
-}
-
-/* Apply the horizontal rule to the bottom of each row */
-table.ruled tr {
-  border-bottom: 1px solid #000;
-}
-
-/* Optional: Remove the border from the last row to keep the bottom flush */
-table.ruled tr:last-child {
-  border-bottom: none;
-}
-
-/* Add padding back in for readability, since the base table is bare */
-table.ruled th,
-table.ruled td {
-  padding: 8px;
-  vertical-align: top;
-}
-
-/* Optional: Give headers a slightly thicker bottom border for hierarchy */
-table.ruled th {
-  text-align: left;
-  background-color: var(--color-default-bg);
+  background-color: var(--color-primary);
+  border-radius: 8px;
 }
