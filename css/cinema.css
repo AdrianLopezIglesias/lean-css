@@ -1,0 +1,567 @@
+/**
+ * cinema.css — classless dark “cinema” theme
+/* ==========================================================================
+   Tokens
+   ========================================================================== */
+
+:root {
+  color-scheme: dark;
+
+  --cinema-bg: #000000;
+  --cinema-chrome: #111111;
+  --cinema-chrome-2: #1a1a1a;
+  --cinema-border: #333333;
+  --cinema-border-soft: #555555;
+  --cinema-text: #eeeeee;
+  --cinema-muted: #aaaaaa;
+  --cinema-faint: #888888;
+  --cinema-input-bg: #222222;
+  --cinema-danger: #aa3333;
+  --cinema-danger-border: #882222;
+  --cinema-danger-bg: #220000;
+  --cinema-danger-text: #ff6666;
+  --cinema-ok: #22aa22;
+  --cinema-accent: #b77086;
+  --cinema-accent-hover: #b02a55;
+
+  --cinema-font: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+  --cinema-font-mono: ui-monospace, 'Cascadia Code', 'SF Mono', Menlo, Consolas,
+    monospace;
+  --cinema-fs: 13px;
+  --cinema-fs-sm: 12px;
+  --cinema-radius: 0;
+  --cinema-gap: 6px;
+  --cinema-pad: 4px 6px;
+  --cinema-control-pad: 3px 8px;
+  --cinema-line: 1.25;
+
+  /* Map common classless-framework tokens if present */
+  --background-color: var(--cinema-bg);
+  --color: var(--cinema-text);
+  --muted-color: var(--cinema-muted);
+  --primary: var(--cinema-accent);
+  --primary-hover: var(--cinema-accent-hover);
+  --card-background-color: var(--cinema-chrome);
+  --card-border-color: var(--cinema-border);
+  --form-element-background-color: var(--cinema-input-bg);
+  --form-element-border-color: var(--cinema-border-soft);
+  --form-element-color: var(--cinema-text);
+}
+
+/* ==========================================================================
+   Document
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: var(--cinema-fs);
+  -webkit-text-size-adjust: 100%;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  width: 100%;
+  max-width: 100%;
+  background: var(--cinema-bg);
+  color: var(--cinema-text);
+  font-family: var(--cinema-font);
+  font-size: var(--cinema-fs);
+  line-height: var(--cinema-line);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+/* ==========================================================================
+   Landmark layout (header / main / footer = cinema chrome)
+   ========================================================================== */
+
+header,
+nav,
+footer {
+  flex: 0 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--cinema-gap);
+  margin: 0;
+  padding: var(--cinema-pad);
+  background: var(--cinema-chrome);
+  color: var(--cinema-text);
+  border: 0;
+}
+
+header,
+nav {
+  border-bottom: 1px solid var(--cinema-border);
+}
+
+footer {
+  border-top: 1px solid var(--cinema-border);
+  max-height: 18vh;
+  overflow: auto;
+}
+
+/* Stage: eats remaining viewport — ideal for <video> / media */
+main {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: var(--cinema-bg);
+  overflow: auto;
+}
+
+/* Full-bleed media inside main (the cinema trick) */
+main > video,
+main > img,
+main > picture,
+main > picture > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  object-fit: contain;
+  background: var(--cinema-bg);
+  vertical-align: middle;
+}
+
+/* If main only holds media and you want absolute fill: */
+main:has(> video:only-child),
+main:has(> img:only-child),
+main:has(> picture:only-child) {
+  overflow: hidden;
+}
+
+main:has(> video:only-child) > video,
+main:has(> img:only-child) > img,
+main:has(> picture:only-child) > picture,
+main:has(> picture:only-child) > picture > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0.4em 0 0.25em;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--cinema-text);
+}
+
+h1 {
+  font-size: 1.35rem;
+}
+h2 {
+  font-size: 1.15rem;
+}
+h3 {
+  font-size: 1.05rem;
+}
+
+p {
+  margin: 0 0 0.5em;
+  color: var(--cinema-text);
+}
+
+small,
+figcaption {
+  font-size: var(--cinema-fs-sm);
+  color: var(--cinema-muted);
+}
+
+a {
+  color: var(--cinema-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--cinema-accent-hover);
+  text-decoration: underline;
+}
+
+strong {
+  font-weight: 700;
+  color: var(--cinema-text);
+}
+
+code,
+kbd,
+samp,
+pre {
+  font-family: var(--cinema-font-mono);
+  font-size: 0.92em;
+}
+
+code,
+kbd {
+  padding: 0.1em 0.35em;
+  background: var(--cinema-input-bg);
+  border: 1px solid var(--cinema-border);
+}
+
+pre {
+  margin: 0.5em 0;
+  padding: 0.6em 0.75em;
+  overflow: auto;
+  background: var(--cinema-chrome);
+  border: 1px solid var(--cinema-border);
+}
+
+pre code {
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+hr {
+  margin: 0.5em 0;
+  border: 0;
+  border-top: 1px solid var(--cinema-border);
+}
+
+blockquote {
+  margin: 0.5em 0;
+  padding: 0.25em 0 0.25em 0.75em;
+  border-left: 2px solid var(--cinema-border-soft);
+  color: var(--cinema-muted);
+}
+
+/* Single-line muted prompt style */
+main + footer p:first-child,
+footer > p:first-child {
+  margin: 0 0 4px;
+  font-size: var(--cinema-fs-sm);
+  color: var(--cinema-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ==========================================================================
+   Lists
+   ========================================================================== */
+
+ul,
+ol {
+  margin: 0.35em 0;
+  padding-left: 1.25em;
+}
+
+li {
+  margin: 0.15em 0;
+}
+
+/* ==========================================================================
+   Forms & controls (compact chrome, not full-width blocks)
+   ========================================================================== */
+
+label {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0;
+  font-size: var(--cinema-fs);
+  color: var(--cinema-muted);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+button,
+input[type='button'],
+input[type='submit'],
+input[type='reset'],
+[role='button'] {
+  display: inline-block;
+  width: auto;
+  margin: 0;
+  padding: var(--cinema-control-pad);
+  font-family: inherit;
+  font-size: var(--cinema-fs);
+  line-height: var(--cinema-line);
+  white-space: nowrap;
+  color: var(--cinema-text);
+  background: var(--cinema-chrome-2);
+  border: 1px solid var(--cinema-border-soft);
+  border-radius: var(--cinema-radius);
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+button:hover,
+input[type='button']:hover,
+input[type='submit']:hover,
+[role='button']:hover {
+  background: #2a2a2a;
+  border-color: #777;
+}
+
+button:active,
+input[type='button']:active,
+input[type='submit']:active {
+  background: #000;
+}
+
+button:disabled,
+input:disabled,
+select:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Primary / danger via native attributes */
+button[type='submit'],
+input[type='submit'] {
+  background: var(--cinema-accent);
+  border-color: var(--cinema-accent-hover);
+  color: #fff;
+}
+
+button[type='submit']:hover,
+input[type='submit']:hover {
+  background: var(--cinema-accent-hover);
+}
+
+button[type='reset'],
+input[type='reset'],
+button[name='delete'],
+button[value='delete'] {
+  background: var(--cinema-danger);
+  border-color: var(--cinema-danger-border);
+  color: #fff;
+}
+
+input[type='text'],
+input[type='search'],
+input[type='email'],
+input[type='password'],
+input[type='number'],
+input[type='url'],
+input[type='tel'],
+input[type='date'],
+input[type='time'],
+input[type='datetime-local'],
+textarea,
+select {
+  display: inline-block;
+  width: auto;
+  max-width: 100%;
+  margin: 0;
+  padding: 2px 6px;
+  font-family: inherit;
+  font-size: var(--cinema-fs);
+  line-height: var(--cinema-line);
+  color: var(--cinema-text);
+  background: var(--cinema-input-bg);
+  border: 1px solid var(--cinema-border-soft);
+  border-radius: var(--cinema-radius);
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+textarea {
+  display: block;
+  width: 100%;
+  min-height: 4.5em;
+  resize: vertical;
+  padding: 6px 8px;
+}
+
+input[type='checkbox'],
+input[type='radio'] {
+  width: 16px;
+  height: 16px;
+  margin: 0 4px 0 0;
+  padding: 0;
+  vertical-align: middle;
+  accent-color: var(--cinema-accent);
+  cursor: pointer;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus-visible {
+  outline: 1px solid var(--cinema-accent);
+  outline-offset: 1px;
+}
+
+/* ==========================================================================
+   Tables (dense, spreadsheet-friendly)
+   ========================================================================== */
+
+table {
+  width: 100%;
+  margin: 0;
+  border-collapse: collapse;
+  font-size: var(--cinema-fs);
+}
+
+th,
+td {
+  margin: 0;
+  padding: 3px 6px;
+  vertical-align: top;
+  text-align: left;
+  border-bottom: 1px solid var(--cinema-border);
+}
+
+th {
+  color: var(--cinema-muted);
+  font-weight: 600;
+  background: var(--cinema-chrome);
+}
+
+tr:hover td {
+  background: #0d0d0d;
+}
+
+/* ==========================================================================
+   Media defaults
+   ========================================================================== */
+
+img,
+video,
+svg {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+video {
+  background: #000;
+}
+
+figure {
+  margin: 0;
+  padding: 0;
+}
+
+/* ==========================================================================
+   Feedback
+   ========================================================================== */
+
+mark {
+  background: #4a2030;
+  color: var(--cinema-text);
+  padding: 0 0.2em;
+}
+
+/* Error / success boxes via native elements */
+dialog {
+  background: var(--cinema-chrome);
+  color: var(--cinema-text);
+  border: 1px solid var(--cinema-border);
+  padding: 0.75rem 1rem;
+}
+
+/* paragraph that looks like an error strip */
+p[role='alert'],
+aside[role='alert'] {
+  margin: 0;
+  padding: 2px 6px;
+  font-size: var(--cinema-fs);
+  color: var(--cinema-danger-text);
+  background: var(--cinema-danger-bg);
+  border: 0;
+}
+
+/* ==========================================================================
+   Progressive: details / summary as compact disclosure
+   ========================================================================== */
+
+details {
+  margin: 0.25em 0;
+  padding: 0.25em 0.4em;
+  background: var(--cinema-chrome);
+  border: 1px solid var(--cinema-border);
+}
+
+summary {
+  cursor: pointer;
+  color: var(--cinema-muted);
+}
+
+/* ==========================================================================
+   Optional utilities (NOT required — ignore for pure classless markup)
+   ========================================================================== */
+
+/* Full-viewport app shell if you can't use body flex */
+.cinema-shell {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--cinema-bg);
+  color: var(--cinema-text);
+  z-index: 50;
+}
+
+.cinema-stage {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+  background: #000;
+}
+
+.cinema-stage > video,
+.cinema-stage > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #000;
+}
+
+/* Pill-ish tags as plain buttons in a footer row */
+.cinema-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.cinema-tags > button[aria-pressed='true'],
+.cinema-tags > button.active {
+  background: var(--cinema-accent);
+  border-color: var(--cinema-accent-hover);
+  color: #fff;
+}
+
+/* Danger action */
+.cinema-danger,
+button.cinema-danger {
+  background: var(--cinema-danger) !important;
+  border-color: var(--cinema-danger-border) !important;
+  color: #fff !important;
+}
