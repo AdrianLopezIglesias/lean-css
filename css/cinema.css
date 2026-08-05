@@ -338,6 +338,29 @@ select:disabled {
   cursor: not-allowed;
 }
 
+/* Selected / active (same role as v1 button.active) */
+button.active,
+input[type='button'].active,
+input[type='submit'].active,
+[role='button'].active,
+button[aria-pressed='true'],
+[role='button'][aria-pressed='true'] {
+  background: var(--cinema-accent);
+  border-color: var(--cinema-accent-hover);
+  color: #fff;
+}
+
+button.active:hover,
+input[type='button'].active:hover,
+input[type='submit'].active:hover,
+[role='button'].active:hover,
+button[aria-pressed='true']:hover,
+[role='button'][aria-pressed='true']:hover {
+  background: var(--cinema-accent-hover);
+  border-color: var(--cinema-accent-hover);
+  color: #fff;
+}
+
 /* Primary / danger via native attributes */
 button[type='submit'],
 input[type='submit'] {

@@ -1,1 +1,10 @@
 node_modules
+
+# Local Grok agent config / packs (not product code)
+.grok/
+
+# Path B manager state and tooling (local session)
+.manager/
+
+# Hub install manifest from empty catalog
+empty.json
