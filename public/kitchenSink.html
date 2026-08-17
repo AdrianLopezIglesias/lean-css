@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Classless CSS Kitchen Sink</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap"
+    />
+    <link id="theme-style" rel="stylesheet" href="/css/v1.css" />
+    <style>
+      #theme-switcher {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        background: Canvas;
+        color: CanvasText;
+        padding: 10px 15px;
+        border: 1px solid currentColor;
+        border-radius: 6px;
+        z-index: 9999;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        font-family: system-ui, sans-serif;
+        font-size: 14px;
+        max-width: 16rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="theme-switcher">
+      <nav>
+        <a href="/">Demos</a>
+        <a href="/adminPanel.html">AdminPanel</a>
+        <a href="/mobileApp.html">MobileApp</a>
+        <a href="/blog.html">Blog</a>
+        <a href="/desktopApp.html">DesktopApp</a>
+        <a href="/glossary.html">Glossary</a>
+        <a href="/kitchenSink.html" aria-current="page">Kitchen sink</a>
+      </nav>
+      <p>
+        <label for="css-version">Theme</label>
+        <select id="css-version">
+          <option value="v1">v1.css</option>
+          <option value="carbon">carbon.css</option>
+          <option value="ig">ig.css</option>
+          <option value="cinema">cinema.css</option>
+          <option value="adminCssV1">adminCssV1.css</option>
+          <option value="adminCssV2">adminCssV2.css</option>
+          <option value="adminCssV3">adminCssV3.css</option>
+        </select>
+      </p>
+    </div>
+
+    <main>
+      <header>
+        <h1>Classless CSS Kitchen Sink</h1>
+        <p>
+          A comprehensive test page for standard HTML elements to ensure your
+          classless stylesheet covers all bases.
+        </p>
+      </header>
+
+      <hr />
+
+      <article>
+        <img
+          src="https://picsum.photos/seed/kitchen-sink/825/465"
+          alt="A landscape view"
+        />
+        <h3>Card Title</h3>
+        <p>
+          This is the content of the card. Because it is inside an article tag,
+          it automatically gets the card styling.
+        </p>
+        <button type="button">Like</button>
+        <button type="button" class="secondary">Comment</button>
+      </article>
+
+      <section id="typography">
+        <h2>Typography & Text Semantics</h2>
+        <h1>Heading Level 1</h1>
+        <h2>Heading Level 2</h2>
+        <h3>Heading Level 3</h3>
+        <h4>Heading Level 4</h4>
+        <h5>Heading Level 5</h5>
+        <h6>Heading Level 6</h6>
+
+        <p>
+          This is a standard paragraph. It contains
+          <strong>strong text</strong>, <em>emphasized text</em>, and text with
+          a <a href="#">standard hyperlink</a>. You can also see
+          <mark>highlighted text</mark>, <del>deleted text</del>,
+          <ins>inserted text</ins>, <sup>superscript</sup>, and
+          <sub>subscript</sub>.
+        </p>
+
+        <blockquote>
+          <p>
+            This is a blockquote. It is typically used to quote content from an
+            external source.
+          </p>
+          <cite>— Author Name</cite>
+        </blockquote>
+
+        <p>
+          Here is some inline computer <code>code</code>, keyboard input like
+          <kbd>Ctrl</kbd> + <kbd>C</kbd>, and a preformatted code block:
+        </p>
+        <pre><code>function helloWorld() {
+    console.log("Hello, world!");
+}</code></pre>
+      </section>
+
+      <hr />
+
+      <section id="lists">
+        <h2>Lists</h2>
+        <h3>Unordered List</h3>
+        <ul>
+          <li>Item 1</li>
+          <li>
+            Item 2
+            <ul>
+              <li>Nested Item 2.1</li>
+              <li>Nested Item 2.2</li>
+            </ul>
+          </li>
+          <li>Item 3</li>
+        </ul>
+
+        <h3>Ordered List</h3>
+        <ol>
+          <li>First item</li>
+          <li>Second item</li>
+          <li>Third item</li>
+        </ol>
+
+        <h3>Definition List</h3>
+        <dl>
+          <dt>HTML</dt>
+          <dd>HyperText Markup Language</dd>
+          <dt>CSS</dt>
+          <dd>Cascading Style Sheets</dd>
+        </dl>
+      </section>
+
+      <hr />
+
+      <section id="tables">
+        <h2>Tables</h2>
+        <table>
+          <caption>
+            Monthly Savings
+          </caption>
+          <thead>
+            <tr>
+              <th>Month</th>
+              <th>Income</th>
+              <th>Expenses</th>
+              <th>Savings</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>January</td>
+              <td>$3,000</td>
+              <td>$2,500</td>
+              <td>$500</td>
+            </tr>
+            <tr>
+              <td>February</td>
+              <td>$3,200</td>
+              <td>$2,400</td>
+              <td>$800</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th>Total</th>
+              <th>$6,200</th>
+              <th>$4,900</th>
+              <th>$1,300</th>
+            </tr>
+          </tfoot>
+        </table>
+
+        <h2>Table bordered</h2>
+        <table class="ruled">
+          <caption>
+            Monthly Savings
+          </caption>
+          <thead>
+            <tr>
+              <th>Month</th>
+              <th>Income</th>
+              <th>Expenses</th>
+              <th>Savings</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>January</td>
+              <td>$3,000</td>
+              <td>$2,500</td>
+              <td>$500</td>
+            </tr>
+            <tr>
+              <td>February</td>
+              <td>$3,200</td>
+              <td>$2,400</td>
+              <td>$800</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th>Total</th>
+              <th>$6,200</th>
+              <th>$4,900</th>
+              <th>$1,300</th>
+            </tr>
+          </tfoot>
+        </table>
+      </section>
+
+      <hr />
+
+      <section id="forms">
+        <h2>Forms & Inputs</h2>
+        <form action="#" method="get">
+          <fieldset>
+            <legend>Personal Information</legend>
+
+            <p>
+              <label for="text-input">Text Input</label><br />
+              <input
+                type="text"
+                id="text-input"
+                name="text-input"
+                placeholder="John Doe"
+              />
+            </p>
+
+            <p>
+              <label for="email-input">Email Input</label><br />
+              <input
+                type="email"
+                id="email-input"
+                name="email-input"
+                placeholder="john@example.com"
+              />
+            </p>
+
+            <p>
+              <label for="password-input">Password Input</label><br />
+              <input
+                type="password"
+                id="password-input"
+                name="password-input"
+                value="password123"
+              />
+            </p>
+
+            <p>
+              <label for="number-input">Number Input</label><br />
+              <input
+                type="number"
+                id="number-input"
+                name="number-input"
+                min="0"
+                max="100"
+                value="42"
+              />
+            </p>
+
+            <p>
+              <label for="select-menu">Select Menu</label><br />
+              <select id="select-menu" name="select-menu">
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+              </select>
+            </p>
+
+            <p>
+              <label for="textarea">Textarea</label><br />
+              <textarea
+                id="textarea"
+                name="textarea"
+                rows="4"
+                placeholder="Type your message here..."
+              ></textarea>
+            </p>
+          </fieldset>
+
+          <fieldset>
+            <legend>Controls & Ranges</legend>
+
+            <p>
+              <label
+                ><input type="checkbox" name="checkbox" checked /> Checkbox
+                1</label
+              ><br />
+              <label
+                ><input type="checkbox" name="checkbox" /> Checkbox 2</label
+              >
+            </p>
+
+            <p>
+              <label
+                ><input type="radio" name="radio" value="1" checked /> Radio
+                1</label
+              ><br />
+              <label
+                ><input type="radio" name="radio" value="2" /> Radio 2</label
+              >
+            </p>
+
+            <p>
+              <label for="range-input">Range Slider</label><br />
+              <input
+                type="range"
+                id="range-input"
+                name="range-input"
+                min="0"
+                max="100"
+                value="50"
+              />
+            </p>
+
+            <p>
+              <label for="color-input">Color Picker</label>
+              <input
+                type="color"
+                id="color-input"
+                name="color-input"
+                value="#0066cc"
+              />
+            </p>
+
+            <p>
+              <label for="date-input">Date Picker</label><br />
+              <input type="date" id="date-input" name="date-input" />
+            </p>
+
+            <p>
+              <label for="file-input">File Upload</label><br />
+              <input type="file" id="file-input" name="file-input" />
+            </p>
+
+            <p>
+              <button type="button">Standard Button</button>
+              <button disabled type="button">Disabled Button</button>
+              <button class="active" type="button">Active Button</button>
+              <button class="primary" type="button">primary Button</button>
+              <button class="warning" type="button">warning Button</button>
+              <button class="danger" type="button">danger Button</button>
+              <button class="secondary" type="button">secondary Button</button>
+              <button class="info" type="button">info Button</button>
+              <button class="active" disabled type="button">
+                Active Disabled Button
+              </button>
+              <input type="submit" value="Submit Input" />
+              <input type="reset" value="Reset Input" />
+              <button type="button" disabled>Disabled Button</button>
+            </p>
+          </fieldset>
+        </form>
+      </section>
+
+      <hr />
+
+      <section id="interactive">
+        <h2>Interactive & Miscellaneous</h2>
+
+        <h3>Details & Summary</h3>
+        <details>
+          <summary>Click to expand this section</summary>
+          <p>
+            This content is hidden by default but revealed when the summary is
+            clicked. Great for FAQs!
+          </p>
+        </details>
+
+        <h3>Meter & Progress</h3>
+        <p>
+          <label for="disk_c">Disk Usage (Meter):</label>
+          <meter id="disk_c" value="6" min="0" max="10">6 out of 10</meter>
+        </p>
+        <p>
+          <label for="file_dl">File Download (Progress):</label>
+          <progress id="file_dl" value="70" max="100">70%</progress>
+        </p>
+
+        <h3>Dialog</h3>
+        <button type="button" id="open-dialog-btn">Open Dialog Modal</button>
+        <dialog id="demo-dialog">
+          <h3>System Alert</h3>
+          <p>
+            This is a native HTML5 dialog element. Ensure it has proper backdrop
+            styling and padding.
+          </p>
+          <form method="dialog">
+            <button>Close Dialog</button>
+          </form>
+        </dialog>
+      </section>
+    </main>
+
+    <script src="/previewer.js"></script>
+    <script>
+      var dialog = document.getElementById("demo-dialog");
+      var openBtn = document.getElementById("open-dialog-btn");
+      openBtn.addEventListener("click", function () {
+        dialog.showModal();
+      });
+    </script>
+  </body>
+</html>

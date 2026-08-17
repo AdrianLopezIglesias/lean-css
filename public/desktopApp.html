@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Papertray — Inbox</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap"
+    />
+    <link id="theme-style" rel="stylesheet" href="/css/v1.css" />
+    <style>
+      #theme-switcher {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        background: Canvas;
+        color: CanvasText;
+        padding: 10px 15px;
+        border: 1px solid currentColor;
+        border-radius: 6px;
+        z-index: 9999;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        font-family: system-ui, sans-serif;
+        font-size: 14px;
+        max-width: 16rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="theme-switcher">
+      <nav>
+        <a href="/">Demos</a>
+        <a href="/adminPanel.html">AdminPanel</a>
+        <a href="/mobileApp.html">MobileApp</a>
+        <a href="/blog.html">Blog</a>
+        <a href="/desktopApp.html" aria-current="page">DesktopApp</a>
+        <a href="/glossary.html">Glossary</a>
+        <a href="/kitchenSink.html">Kitchen sink</a>
+      </nav>
+      <p>
+        <label for="css-version">Theme</label>
+        <select id="css-version">
+          <option value="v1">v1.css</option>
+          <option value="carbon">carbon.css</option>
+          <option value="ig">ig.css</option>
+          <option value="cinema">cinema.css</option>
+          <option value="adminCssV1">adminCssV1.css</option>
+          <option value="adminCssV2">adminCssV2.css</option>
+          <option value="adminCssV3">adminCssV3.css</option>
+        </select>
+      </p>
+    </div>
+
+    <header>
+      <p><strong>Papertray</strong></p>
+      <form role="search" action="#" method="get">
+        <label for="mail-search">Search mail</label>
+        <input
+          id="mail-search"
+          name="q"
+          type="search"
+          placeholder="From, subject, or order number"
+        />
+      </form>
+      <p>
+        <button type="button" id="open-compose">Compose</button>
+        <button type="button">Sync</button>
+      </p>
+    </header>
+
+    <nav>
+      <p>Mailboxes</p>
+      <a href="#inbox" aria-current="page">Inbox 12</a>
+      <a href="#starred">Starred</a>
+      <a href="#drafts">Drafts 2</a>
+      <a href="#sent">Sent</a>
+      <a href="#archive">Archive</a>
+      <a href="#trash">Trash</a>
+    </nav>
+
+    <main>
+      <h1>Inbox</h1>
+
+      <table>
+        <caption>
+          Messages
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">From</th>
+            <th scope="col">Subject</th>
+            <th scope="col">When</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>North Loop Market</td>
+            <td><a href="#read">Dock 2 is clear — cups still short</a></td>
+            <td>09:14</td>
+          </tr>
+          <tr>
+            <td>Harbor Inn</td>
+            <td><a href="#read">Re: order 1033 held for private lunch</a></td>
+            <td>08:40</td>
+          </tr>
+          <tr>
+            <td>West Shed Co-op</td>
+            <td><a href="#read">FL-204 running low before Thursday</a></td>
+            <td>Yesterday</td>
+          </tr>
+          <tr>
+            <td>Pines Cafe</td>
+            <td><a href="#read">Delivery window for 1038</a></td>
+            <td>Yesterday</td>
+          </tr>
+          <tr>
+            <td>Ada Chen</td>
+            <td><a href="#read">Invoice for 1041</a></td>
+            <td>Sun</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <article id="read">
+        <header>
+          <h2>Dock 2 is clear — cups still short</h2>
+          <p>
+            <strong>North Loop Market</strong>
+            to you, Sam
+            · Today 09:14
+          </p>
+        </header>
+        <p>Ada,</p>
+        <p>
+          Dock 2 is empty and swept. The 1042 pallets are staged against the
+          east wall. We are still short one sleeve of CP-018 — if you have a
+          spare crate on the van, leave it with the milk.
+        </p>
+        <p>
+          Kitchen wants the beans before ten. Side door is unlocked until then.
+        </p>
+        <p>— Mara</p>
+        <p>
+          <button type="button">Reply</button>
+          <button type="button">Archive</button>
+          <button type="button">Delete</button>
+        </p>
+      </article>
+    </main>
+
+    <footer>
+      <p>12 unread · last sync 2 min ago · Ada Chen</p>
+    </footer>
+
+    <dialog id="compose-dialog">
+      <h2>Compose</h2>
+      <form method="dialog">
+        <p>
+          <label for="compose-to">To</label>
+          <input id="compose-to" name="to" type="email" placeholder="ada@harbor.local" />
+        </p>
+        <p>
+          <label for="compose-subject">Subject</label>
+          <input id="compose-subject" name="subject" type="text" />
+        </p>
+        <p>
+          <label for="compose-body">Message</label>
+          <textarea id="compose-body" name="body" rows="6"></textarea>
+        </p>
+        <p>
+          <button type="submit">Send</button>
+          <button type="submit" value="cancel">Cancel</button>
+        </p>
+      </form>
+    </dialog>
+
+    <script src="/previewer.js"></script>
+    <script>
+      var dialog = document.getElementById("compose-dialog");
+      var openBtn = document.getElementById("open-compose");
+      openBtn.addEventListener("click", function () {
+        dialog.showModal();
+      });
+    </script>
+  </body>
+</html>

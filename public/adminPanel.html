@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Harbor — Orders</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap"
+    />
+    <link id="theme-style" rel="stylesheet" href="/css/adminCssV1.css" />
+    <style>
+      #theme-switcher {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        background: Canvas;
+        color: CanvasText;
+        padding: 10px 15px;
+        border: 1px solid currentColor;
+        border-radius: 6px;
+        z-index: 9999;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        font-family: system-ui, sans-serif;
+        font-size: 14px;
+        max-width: 16rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="theme-switcher">
+      <nav>
+        <a href="/">Demos</a>
+        <a href="/adminPanel.html" aria-current="page">AdminPanel</a>
+        <a href="/mobileApp.html">MobileApp</a>
+        <a href="/blog.html">Blog</a>
+        <a href="/desktopApp.html">DesktopApp</a>
+        <a href="/glossary.html">Glossary</a>
+        <a href="/kitchenSink.html">Kitchen sink</a>
+      </nav>
+      <p>
+        <label for="css-version">Theme</label>
+        <select id="css-version">
+          <option value="v1">v1.css</option>
+          <option value="carbon">carbon.css</option>
+          <option value="ig">ig.css</option>
+          <option value="cinema">cinema.css</option>
+          <option value="adminCssV1" selected>adminCssV1.css</option>
+          <option value="adminCssV2">adminCssV2.css</option>
+          <option value="adminCssV3">adminCssV3.css</option>
+        </select>
+      </p>
+    </div>
+
+    <header>
+      <p><strong>Harbor</strong> Operations</p>
+      <form role="search" action="#" method="get">
+        <label for="global-search">Search Harbor</label>
+        <input
+          id="global-search"
+          name="q"
+          type="search"
+          placeholder="Orders, customers, SKUs"
+        />
+      </form>
+      <p>
+        <button type="button">Alerts 3</button>
+        Ada Chen
+      </p>
+    </header>
+
+    <nav>
+      <p>Workspace</p>
+      <a href="#overview">Overview</a>
+      <a href="#orders" aria-current="page">Orders</a>
+      <a href="#customers">Customers</a>
+      <a href="#catalog">Catalog</a>
+      <a href="#settings">Settings</a>
+    </nav>
+
+    <main>
+      <nav>
+        <a href="#orders">Orders</a>
+        /
+        <span>Recent</span>
+      </nav>
+
+      <h1>Orders</h1>
+      <p>
+        <button type="button" id="open-order-dialog">New order</button>
+      </p>
+
+      <form action="#" method="get">
+        <fieldset>
+          <legend>Filter this list</legend>
+          <p>
+            <label for="order-search">Find in orders</label>
+            <input
+              id="order-search"
+              name="order-search"
+              type="search"
+              placeholder="Order number or customer"
+            />
+          </p>
+          <p>
+            <label for="order-status">Status</label>
+            <select id="order-status" name="status">
+              <option value="">Any</option>
+              <option value="paid">Paid</option>
+              <option value="packed">Packed</option>
+              <option value="shipped">Shipped</option>
+              <option value="held">Held</option>
+            </select>
+          </p>
+          <p>
+            <label for="order-from">From</label>
+            <input id="order-from" name="from" type="date" value="2026-08-01" />
+          </p>
+          <p>
+            <button type="submit">Apply filters</button>
+            <button type="reset">Reset</button>
+          </p>
+        </fieldset>
+      </form>
+
+      <table>
+        <caption>
+          Recent orders
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">Order</th>
+            <th scope="col">Customer</th>
+            <th scope="col">Status</th>
+            <th scope="col">Total</th>
+            <th scope="col">Updated</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="#order-1042">1042</a></td>
+            <td>North Loop Market</td>
+            <td>Packed</td>
+            <td>$418.20</td>
+            <td>Today 09:14</td>
+          </tr>
+          <tr>
+            <td><a href="#order-1041">1041</a></td>
+            <td>Ada Chen</td>
+            <td>Paid</td>
+            <td>$86.00</td>
+            <td>Today 08:02</td>
+          </tr>
+          <tr>
+            <td><a href="#order-1038">1038</a></td>
+            <td>Pines Cafe</td>
+            <td>Shipped</td>
+            <td>$1,204.50</td>
+            <td>Yesterday</td>
+          </tr>
+          <tr>
+            <td><a href="#order-1033">1033</a></td>
+            <td>Harbor Inn</td>
+            <td>Held</td>
+            <td>$62.40</td>
+            <td>Aug 14</td>
+          </tr>
+          <tr>
+            <td><a href="#order-1029">1029</a></td>
+            <td>West Shed Co-op</td>
+            <td>Shipped</td>
+            <td>$290.00</td>
+            <td>Aug 12</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <section id="order-1042">
+        <h2>Order 1042</h2>
+        <p>North Loop Market · packed, waiting on dock 2.</p>
+        <dl>
+          <dt>Placed</dt>
+          <dd>17 Aug 2026, 07:41</dd>
+          <dt>Payment</dt>
+          <dd>Net 15 · paid</dd>
+          <dt>Ship to</dt>
+          <dd>14 Binder Street, North Loop</dd>
+        </dl>
+        <table>
+          <caption>
+            Line items
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">SKU</th>
+              <th scope="col">Item</th>
+              <th scope="col">Qty</th>
+              <th scope="col">Line</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>FL-204</td>
+              <td>Flat white beans, 2kg</td>
+              <td>8</td>
+              <td>$256.00</td>
+            </tr>
+            <tr>
+              <td>CP-018</td>
+              <td>Paper cups, sleeve of 50</td>
+              <td>12</td>
+              <td>$96.00</td>
+            </tr>
+            <tr>
+              <td>MK-003</td>
+              <td>Whole milk, crate</td>
+              <td>4</td>
+              <td>$66.20</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          <button type="button">Mark shipped</button>
+          <button type="button">Print pick list</button>
+          <button type="button">Hold order</button>
+        </p>
+      </section>
+    </main>
+
+    <dialog id="new-order-dialog">
+      <h2>New order</h2>
+      <form method="dialog">
+        <p>
+          <label for="new-customer">Customer</label>
+          <input id="new-customer" name="customer" type="text" required />
+        </p>
+        <p>
+          <label for="new-sku">First SKU</label>
+          <input id="new-sku" name="sku" type="text" placeholder="FL-204" />
+        </p>
+        <p>
+          <label for="new-qty">Quantity</label>
+          <input id="new-qty" name="qty" type="number" min="1" value="1" />
+        </p>
+        <p>
+          <button type="submit">Create draft</button>
+          <button type="submit" value="cancel">Cancel</button>
+        </p>
+      </form>
+    </dialog>
+
+    <script src="/previewer.js"></script>
+    <script>
+      var dialog = document.getElementById("new-order-dialog");
+      var openBtn = document.getElementById("open-order-dialog");
+      openBtn.addEventListener("click", function () {
+        dialog.showModal();
+      });
+    </script>
+  </body>
+</html>

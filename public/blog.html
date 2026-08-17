@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Long Coast — A working tide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap"
+    />
+    <link id="theme-style" rel="stylesheet" href="/css/v1.css" />
+    <style>
+      #theme-switcher {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        background: Canvas;
+        color: CanvasText;
+        padding: 10px 15px;
+        border: 1px solid currentColor;
+        border-radius: 6px;
+        z-index: 9999;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        font-family: system-ui, sans-serif;
+        font-size: 14px;
+        max-width: 16rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="theme-switcher">
+      <nav>
+        <a href="/">Demos</a>
+        <a href="/adminPanel.html">AdminPanel</a>
+        <a href="/mobileApp.html">MobileApp</a>
+        <a href="/blog.html" aria-current="page">Blog</a>
+        <a href="/desktopApp.html">DesktopApp</a>
+        <a href="/glossary.html">Glossary</a>
+        <a href="/kitchenSink.html">Kitchen sink</a>
+      </nav>
+      <p>
+        <label for="css-version">Theme</label>
+        <select id="css-version">
+          <option value="v1">v1.css</option>
+          <option value="carbon">carbon.css</option>
+          <option value="ig">ig.css</option>
+          <option value="cinema">cinema.css</option>
+          <option value="adminCssV1">adminCssV1.css</option>
+          <option value="adminCssV2">adminCssV2.css</option>
+          <option value="adminCssV3">adminCssV3.css</option>
+        </select>
+      </p>
+    </div>
+
+    <header>
+      <p>The Long Coast</p>
+      <h1>Notes on weather, work, and walking</h1>
+      <nav>
+        <a href="#essay" aria-current="page">Essays</a>
+        <a href="#more">Field notes</a>
+        <a href="#about">About</a>
+      </nav>
+    </header>
+
+    <main>
+      <article id="essay">
+        <figure>
+          <img
+            src="https://picsum.photos/seed/long-coast/960/480"
+            alt="Low tide along a stony beach"
+          />
+          <figcaption>North breakwater, last Tuesday, after the rain stopped.</figcaption>
+        </figure>
+        <h2>A working tide</h2>
+        <p>
+          <small>17 August 2026 · Mara Ellison · 12 min</small>
+        </p>
+        <p>
+          The harbor does not open because someone typed
+          <code>ready</code> into a console. It opens because the tide came in,
+          the dock was swept, and someone counted the crates twice.
+        </p>
+        <p>
+          I have been walking the same mile of coast for a year. The work is
+          ordinary. The light is not. Most mornings the water is the color of
+          wet slate, and the only bright thing is a yellow sleeve of cups
+          waiting on a pallet.
+        </p>
+        <blockquote>
+          <p>
+            Keep the list short enough to finish before the weather changes.
+          </p>
+          <cite>— Dock board, unsigned</cite>
+        </blockquote>
+        <h3>What the list is for</h3>
+        <p>
+          A list is not a plan. A list is a way to stop carrying the day in
+          your head. When the wind picks up you want
+          <strong>one next action</strong>, not a strategy deck.
+        </p>
+        <p>
+          I still write mine on paper. The first line is always a place. The
+          second is a person. Software that forgets those two things is just a
+          ledger with nicer type.
+        </p>
+        <pre><code>place: north loop market
+person: ada
+next: leave the crate at the side door</code></pre>
+        <h3>After the walk</h3>
+        <p>
+          There is a bench above the breakwater. If you sit long enough the
+          gulls stop performing. That is when the essay starts — not with a
+          thesis, but with a <em>quiet inventory</em> of what actually moved.
+        </p>
+        <p>
+          Tomorrow I will walk the same mile. The tide will be different. The
+          cups may still be short one sleeve.
+        </p>
+      </article>
+
+      <section id="more">
+        <h2>More from the coast</h2>
+        <article>
+          <h3><a href="#essay">The crate at the side door</a></h3>
+          <p>A short note on held orders, private lunches, and leaving things where people will find them.</p>
+          <p><small>14 August 2026 · Field notes</small></p>
+        </article>
+        <article>
+          <h3><a href="#essay">Counting twice</a></h3>
+          <p>Why the second count is a kindness, not a lack of trust.</p>
+          <p><small>2 August 2026 · Essays</small></p>
+        </article>
+        <article>
+          <h3><a href="#essay">Weather as a deadline</a></h3>
+          <p>Rain as a scheduling tool, and other things the calendar will not admit.</p>
+          <p><small>21 July 2026 · Essays</small></p>
+        </article>
+      </section>
+    </main>
+
+    <aside id="about">
+      <h2>About</h2>
+      <p>
+        The Long Coast is a small magazine about ordinary work next to water.
+        New essays most Mondays.
+      </p>
+      <h3>Topics</h3>
+      <ul>
+        <li>Weather</li>
+        <li>Walking</li>
+        <li>Work</li>
+        <li>Harbors</li>
+      </ul>
+      <form action="#" method="post">
+        <fieldset>
+          <legend>Letter</legend>
+          <p>
+            <label for="letter-email">Email</label>
+            <input id="letter-email" name="email" type="email" placeholder="you@example.com" />
+          </p>
+          <p>
+            <button type="submit">Subscribe</button>
+          </p>
+        </fieldset>
+      </form>
+    </aside>
+
+    <footer>
+      <p>The Long Coast · North Loop · 2026</p>
+      <p><a href="#essay">Back to the essay</a></p>
+    </footer>
+
+    <script src="/previewer.js"></script>
+  </body>
+</html>

@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kite — Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap"
+    />
+    <link id="theme-style" rel="stylesheet" href="/css/v1.css" />
+    <style>
+      #theme-switcher {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        background: Canvas;
+        color: CanvasText;
+        padding: 10px 15px;
+        border: 1px solid currentColor;
+        border-radius: 6px;
+        z-index: 9999;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        font-family: system-ui, sans-serif;
+        font-size: 14px;
+        max-width: 16rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="theme-switcher">
+      <nav>
+        <a href="/">Demos</a>
+        <a href="/adminPanel.html">AdminPanel</a>
+        <a href="/mobileApp.html" aria-current="page">MobileApp</a>
+        <a href="/blog.html">Blog</a>
+        <a href="/desktopApp.html">DesktopApp</a>
+        <a href="/glossary.html">Glossary</a>
+        <a href="/kitchenSink.html">Kitchen sink</a>
+      </nav>
+      <p>
+        <label for="css-version">Theme</label>
+        <select id="css-version">
+          <option value="v1">v1.css</option>
+          <option value="carbon">carbon.css</option>
+          <option value="ig">ig.css</option>
+          <option value="cinema">cinema.css</option>
+          <option value="adminCssV1">adminCssV1.css</option>
+          <option value="adminCssV2">adminCssV2.css</option>
+          <option value="adminCssV3">adminCssV3.css</option>
+        </select>
+      </p>
+    </div>
+
+    <header>
+      <h1>Kite</h1>
+      <p>North Loop · 3 stops left</p>
+      <p>
+        <button type="button" id="open-checkin">Check in</button>
+      </p>
+    </header>
+
+    <main>
+      <p>
+        <label for="today-loop">Today's loop</label>
+        <progress id="today-loop" value="5" max="8">5 of 8</progress>
+      </p>
+
+      <article>
+        <img
+          src="https://picsum.photos/seed/kite-dock/800/500"
+          alt="Empty loading dock in morning light"
+        />
+        <h2>Dock 2 is clear</h2>
+        <p>Ada · 12 min ago · North Loop Market</p>
+        <p>Pallets staged. Cups still short one sleeve.</p>
+        <p>
+          <button type="button">Up</button>
+          <button type="button">Reply</button>
+        </p>
+      </article>
+
+      <article>
+        <img
+          src="https://picsum.photos/seed/kite-beans/800/500"
+          alt="Open sack of coffee beans"
+        />
+        <h2>FL-204 running low</h2>
+        <p>Sam · 41 min ago · West Shed</p>
+        <p>Two bags left. Reorder before Thursday roast.</p>
+        <p>
+          <button type="button">Up</button>
+          <button type="button">Reply</button>
+        </p>
+      </article>
+
+      <article>
+        <h2>Held: Harbor Inn 1033</h2>
+        <p>You · 2 hr ago · Harbor Inn</p>
+        <p>Kitchen closed for a private lunch. Leave the crate at the side door.</p>
+        <p>
+          <button type="button">Up</button>
+          <button type="button">Reply</button>
+        </p>
+      </article>
+    </main>
+
+    <nav>
+      <a href="#home" aria-current="page">Home</a>
+      <a href="#map">Map</a>
+      <a href="#inbox">Inbox</a>
+      <a href="#you">You</a>
+    </nav>
+
+    <dialog id="checkin-dialog">
+      <h2>Check in</h2>
+      <form method="dialog">
+        <p>
+          <label for="checkin-place">Place</label>
+          <input id="checkin-place" name="place" type="text" value="North Loop Market" />
+        </p>
+        <p>
+          <label for="checkin-note">Note</label>
+          <textarea id="checkin-note" name="note" rows="3" placeholder="What should the next stop know?"></textarea>
+        </p>
+        <p>
+          <label><input type="checkbox" name="photo" /> Attach last photo</label>
+        </p>
+        <p>
+          <button type="submit">Post</button>
+          <button type="submit" value="cancel">Cancel</button>
+        </p>
+      </form>
+    </dialog>
+
+    <script src="/previewer.js"></script>
+    <script>
+      var dialog = document.getElementById("checkin-dialog");
+      var openBtn = document.getElementById("open-checkin");
+      openBtn.addEventListener("click", function () {
+        dialog.showModal();
+      });
+    </script>
+  </body>
+</html>
